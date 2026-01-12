@@ -32,7 +32,6 @@ os.makedirs("curve_data", exist_ok=True)
 with open(DATA_PKL, "rb") as f:
     data = pickle.load(f)
     hypergraph = data["combined_hypergraph"]
-    hyperedge_weights = data.get("hyperedge_weights", {})
 
 node_to_index = {node: idx for idx, node in enumerate(hypergraph.nodes)}
 num_nodes = len(hypergraph.nodes)
@@ -44,12 +43,11 @@ for edge_id in hypergraph.edges:
     nodes = [node_to_index[node] for node in hypergraph.edges[edge_id] if node in node_to_index]
     if len(nodes) >= 2:
         e_list.append(nodes)
-        e_weights.append(hyperedge_weights.get(edge_id, 1.0))
 
 dhg_hypergraph = Hypergraph(num_nodes, e_list, e_weights)
 
 # ------------------- 初始化特征 -------------------
-node_features = torch.randn((num_nodes, 128))  # 若有真实特征，请替换
+node_features = torch.randn((num_nodes, 128))
 
 
 # ------------------- 模型 -------------------
@@ -165,7 +163,6 @@ print(f"device = {device}")
 try:
     dhg_hypergraph = dhg_hypergraph.to(device)
 except Exception:
-    # 若 dhg Hypergraph 不支持 .to()
     pass
 
 model = HypergraphTransformerConv(128, 128, 256, nhead=4, num_layers=3, dim_feedforward=512).to(device)
