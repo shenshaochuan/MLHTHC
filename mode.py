@@ -23,9 +23,9 @@ torch.manual_seed(SEED)
 if torch.cuda.is_available():
     torch.cuda.manual_seed_all(SEED)
 
-DATA_PKL = r"E:\PyCharm_Files\code_experiment\new_multi-layer_hypergraph.pkl"
-INTERACTION_CSV = r"E:\PyCharm_Files\Code\相互作用\filtered_drug_interactions.csv"
-OUTPUT_MODEL = "transformer_hgnn_best_811.pth"
+DATA_PKL = r""
+INTERACTION_CSV = r""
+OUTPUT_MODEL = ""
 os.makedirs("curve_data", exist_ok=True)
 
 # ------------------- 加载超图 -------------------
