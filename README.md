@@ -14,7 +14,7 @@ Key Challenges Addressed
 
 - Feature Fusion Inefficiency: Isolated use of drug attributes (e.g., chemical structure, target) leads to incomplete feature representation.
 
-⚙️ Methodology
+Methodology
 
 MLHTHC consists of four core modules, forming a end-to-end DDI prediction pipeline:
 
