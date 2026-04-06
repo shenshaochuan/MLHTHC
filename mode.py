@@ -194,7 +194,7 @@ for epoch in range(num_epochs):
     total_samples = 0
 
     # 梯度累积控制
-    grad_accum_steps = 4  # 你可调小以降低 GPU 内存占用
+    grad_accum_steps = 4
     accum_loss = 0.0
     accum_count = 0
 
